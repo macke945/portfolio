@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "projects",
+  "collectionName": "blogs",
   "info": {
-    "name": "Project"
+    "name": "Blog"
   },
   "options": {
     "increments": true,
@@ -13,38 +13,44 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "text",
+    "content": {
+      "type": "richtext",
       "required": true
     },
     "image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "files",
         "images",
+        "files",
         "videos"
       ],
       "plugin": "upload",
       "required": true
     },
-    "github": {
-      "type": "string",
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
       "required": true
     },
-    "url": {
-      "type": "string",
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "html",
+        "sass",
+        "pug",
+        "styledComponents",
+        "react",
+        "gatsby"
+      ],
       "required": true
     },
-    "featured": {
-      "type": "boolean",
-      "default": false,
+    "desc": {
+      "type": "text",
       "required": true
     },
-    "stack": {
-      "type": "component",
-      "repeatable": true,
-      "component": "description.stack",
+    "date": {
+      "type": "date",
       "required": true
     }
   }
